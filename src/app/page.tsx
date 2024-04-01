@@ -5,6 +5,7 @@ import { Spinner, Textarea } from "@nextui-org/react";
 import { GeolocationContext } from "./context/GeeolocationContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import MainWeather from "./components/MainWeather";
 
 export default function Home() {
     const [cords, setCords] = useState<{ lat: number; lon: number } | null>(
@@ -72,7 +73,10 @@ export default function Home() {
         return (
             <div className="w-screen md:h-screen h-fit grid md:grid-cols-4 md:grid-rows-11 grid-cols-1 grid-rows-[repeat(23,_minmax(0,_1fr))]">
                 <Header handleCords={handleCords} />
-
+                <MainWeather
+                    data={weatherData ?? null}
+                    isLoaded={weatherDataIsLoaded}
+                />
                 <Footer />
             </div>
         );
@@ -92,7 +96,7 @@ export default function Home() {
                         label="Note:"
                         variant="bordered"
                         labelPlacement="inside"
-                        defaultValue="To get accurate weather updates please grant location access or search any city."
+                        defaultValue="To get accurate weather updates please grant location access and reload the page or search any city."
                         className="max-w-xs"
                     />
                 </div>
