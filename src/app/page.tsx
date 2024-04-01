@@ -1,20 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { Spinner, Textarea } from "@nextui-org/react";
+import { GeolocationContext } from "./context/GeeolocationContext";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
-    const [weatherData, setWeatherData] = useState();
+    const [cords, setCords] = useState<{ lat: number; lon: number } | null>(
+        null
+    );
+    const [weatherData, setWeatherData] = useState<WeatherData>();
+    const [weatherDataIsLoaded, setWeatherDataIsLoaded] =
+        useState<boolean>(true);
+
+    const { navigatorIsAllowed } = useContext(GeolocationContext);
+
+    const handleCords = (value: { lat: number; lon: number } | null) => {
+        setCords(value);
+    };
 
     useEffect(() => {
+        setWeatherDataIsLoaded(false);
         const fetchweather = async () => {
             const data = await fetch(
-                `api/weather?lat=19.075983&lon=72.877655`,
-                {
-                    method: "GET",
-                }
+                `api/weather?lat=${cords?.lat}&lon=${cords?.lon}`
             )
                 .then((res: any) => {
-                    return res.json();
+                    if (res.status === 200) {
+                        return res.json();
+                    } else {
+                        return {
+                            status: res.status,
+                            message: res.message,
+                        };
+                    }
                 })
                 .catch((err) => {
                     status: 500;
@@ -22,11 +42,66 @@ export default function Home() {
                 });
 
             setWeatherData(data);
+            setWeatherDataIsLoaded(true);
         };
-        fetchweather();
-    }, []);
 
-    console.log(weatherData);
+        if (cords?.lat && cords?.lon) {
+            fetchweather();
+        }
+    }, [cords]);
 
-    return <h1>Hello World!</h1>;
+    useEffect(() => {
+        if (navigatorIsAllowed) {
+            setWeatherDataIsLoaded(false);
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setCords({
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude,
+                    });
+                    console.log("wassup...");
+                },
+                (error) => {
+                    console.log(error);
+                }
+            );
+        }
+    }, [navigatorIsAllowed]);
+
+    if (cords) {
+        return (
+            <div className="w-screen md:h-screen h-fit grid md:grid-cols-4 md:grid-rows-11 grid-cols-1 grid-rows-[repeat(23,_minmax(0,_1fr))]">
+                <Header handleCords={handleCords} />
+
+                <Footer />
+            </div>
+        );
+    }
+
+    return (
+        <div
+            className={`w-screen md:h-screen${
+                !cords && " h-screen"
+            } grid md:grid-cols-4 md:grid-rows-11 grid-cols-1 grid-rows-[repeat(26, minmax(0, 1fr))]`}
+        >
+            <Header handleCords={handleCords} />
+            {!navigatorIsAllowed && !cords ? (
+                <div className="h-auto md:col-span-4 col-span-1 md:row-span-9 row-[span_23_/_span_23] col-start-1 row-start-2 flex justify-center items-center">
+                    <Textarea
+                        isReadOnly
+                        label="Note:"
+                        variant="bordered"
+                        labelPlacement="inside"
+                        defaultValue="To get accurate weather updates please grant location access or search any city."
+                        className="max-w-xs"
+                    />
+                </div>
+            ) : (
+                <div className="h-auto md:col-span-4 col-span-1 md:row-span-9 row-[span_23_/_span_23] col-start-1 row-start-2 flex justify-center items-center">
+                    <Spinner />
+                </div>
+            )}
+            <Footer />
+        </div>
+    );
 }
