@@ -11,7 +11,7 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
     const { theme } = useContext(ThemeContext);
     return (
         <body
-            className={`${inter.className} ${theme} text-foreground bg-background`}
+            className={`${inter.className} ${theme} text-foreground bg-background no-scrollbar`}
         >
             <NextUIProvider>{children}</NextUIProvider>
         </body>

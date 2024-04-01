@@ -6,6 +6,7 @@ import { GeolocationContext } from "./context/GeeolocationContext";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainWeather from "./components/MainWeather";
+import Metadata from "./components/Metadata";
 
 export default function Home() {
     const [cords, setCords] = useState<{ lat: number; lon: number } | null>(
@@ -71,12 +72,19 @@ export default function Home() {
 
     if (cords) {
         return (
-            <div className="w-screen md:h-screen h-fit grid md:grid-cols-4 md:grid-rows-11 grid-cols-1 grid-rows-[repeat(23,_minmax(0,_1fr))]">
+            <div className="w-screen md:h-screen h-fit grid md:grid-cols-4 md:grid-rows-11 grid-cols-1 grid-rows-[repeat(25,_minmax(0,_1fr))] scroll-smooth">
                 <Header handleCords={handleCords} />
                 <MainWeather
                     data={weatherData ?? null}
                     isLoaded={weatherDataIsLoaded}
                 />
+                <div className="md:col-span-3 col-span-1 md:row-span-9 row-[span_15_/_span_15] md:col-start-2 col-start-1 md:row-start-2 row-start-10 grid md:grid-cols-3 grid-cols-1 md:grid-rows-9 grid-rows-[repeat(21,_minmax(0,_1fr))] px-2 md:my-0 my-2 md:gap-3 gap-4">
+                    <Metadata
+                        data={weatherData ?? null}
+                        isLoaded={weatherDataIsLoaded}
+                        cords={cords}
+                    />
+                </div>
                 <Footer />
             </div>
         );

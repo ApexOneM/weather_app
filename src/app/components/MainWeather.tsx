@@ -73,11 +73,11 @@ const MainWeather = (props: {
     }
 
     return (
-        <main className="col-span-1 md:row-span-9 row-span-6 row-start-2 col-start-1 flex flex-col justify-evenly items-center md:gap-0 gap-2">
+        <main className="col-span-1 md:row-span-9 row-span-8 row-start-2 col-start-1 flex flex-col justify-evenly items-center md:gap-0 gap-2">
             <div className="w-full flex flex-col justify-center items-center">
                 <Skeleton
                     isLoaded={props.isLoaded}
-                    className="rounded-lg w-24 h-24 flex justify-center items-center"
+                    className="rounded-lg w-[7rem] h-[7rem] flex justify-center items-center"
                 >
                     <Image
                         loading="lazy"
@@ -86,7 +86,7 @@ const MainWeather = (props: {
                         src={`https://raw.githubusercontent.com/basmilius/weather-icons/6c186523be593ebe2e5674705b904a6d96c96a0c/production/fill/openweathermap/${props.data?.weather[0].icon}.svg`}
                     />
                 </Skeleton>
-                <Spacer x={0.5} />
+                <Spacer x={1} />
                 <Skeleton
                     isLoaded={props.isLoaded}
                     className="rounded-lg w-1/2 h-8 flex justify-center items-center"
@@ -95,7 +95,7 @@ const MainWeather = (props: {
                         {props.data?.weather[0].main}
                     </div>
                 </Skeleton>
-                <Spacer x={0.5} />
+                <Spacer x={1} />
                 <Skeleton
                     isLoaded={props.isLoaded}
                     className={`rounded-lg ${
@@ -106,7 +106,7 @@ const MainWeather = (props: {
                         {props.data?.weather[0].description}
                     </div>
                 </Skeleton>
-                <Spacer x={0.5} />
+                <Spacer x={1} />
                 <Skeleton
                     isLoaded={props.isLoaded}
                     className="rounded-lg flex justify-center items-center h-[3.75rem] w-2/3"
@@ -120,7 +120,9 @@ const MainWeather = (props: {
             <Divider className="w-4/5" />
             <div className="flex flex-col justify-center items-center w-full">
                 <div className="text-sm font-semibold">{dateTime.day}</div>
+                <Spacer x={1} />
                 <div className="text-lg font-medium">{dateTime.date}</div>
+                <Spacer x={1} />
                 <div className="flex justify-center items-center dark:bg-blue-500 bg-zinc-500 p-2 rounded-lg">
                     <div className="flex justify-center items-center w-20 font-bold">
                         {dateTime.time}
