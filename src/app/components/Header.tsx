@@ -158,7 +158,7 @@ const Header = ({ handleCords }: Props) => {
                         </Tooltip>
                     )}
                 </NavbarItem>
-                <NavbarItem className="search_bar pr-4">
+                <NavbarItem className="md:block hidden pr-4">
                     <Button
                         color="default"
                         aria-label="Search City"
@@ -171,7 +171,7 @@ const Header = ({ handleCords }: Props) => {
                         Search cities...
                     </Button>
                 </NavbarItem>
-                <NavbarItem className="md:hidden search_icon pr-4">
+                <NavbarItem className="md:hidden pr-4">
                     <Button
                         color="default"
                         isIconOnly
