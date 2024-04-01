@@ -12,22 +12,24 @@ const Footer = () => {
                 <Link href="https://www.openuv.io/">OpenUV</Link>
             </div>
             <div className="flex justify-center items-center md:flex-row flex-col">
-                <Link href="#">© Muzaffar Shaikh</Link>
+                <Link href={process.env.PORTFOLIO} className="cursor-pointer">
+                    © Muzaffar Shaikh
+                </Link>
                 <Spacer x={2} />
                 <div className="flex justify-center items-center gap-1">
                     <Tooltip content="GitHub">
-                        <Link href="#" color="foreground">
+                        <Link href={process.env.GITHUB} color="foreground">
                             <FaGithub className="w-10" />
                         </Link>
                     </Tooltip>
                     <Tooltip content="LinkedIn">
-                        <Link href="#" color="foreground">
+                        <Link href={process.env.LINKEDIN} color="foreground">
                             <FaLinkedin className="w-10" />
                         </Link>
                     </Tooltip>
                     <Tooltip content="Email">
                         <Link
-                            href="mailto:muzaffarshaikh0201@gmail.com"
+                            href={`mailto:${process.env.EMAIL}`}
                             color="foreground"
                         >
                             <MdEmail className="w-10" />
