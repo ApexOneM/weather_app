@@ -123,7 +123,7 @@ const Metadata = ({ data, isLoaded, cords }: Props) => {
     return (
         <div className="md:col-span-2 md:row-span-6 md:col-start-1 row-start-1 col-span-1 row-span-12 grid md:grid-cols-2 grid-cols-1 md:grid-rows-6 grid-rows-12 md:gap-2 gap-4">
             <div className="w-full h-full col-span-1 row-span-6 col-start-1 row-start-1 rounded-xl grid grid-cols-1 grid-rows-4 gap-1">
-                <div className="w-full col-span-1 row-span-1 row-start-1 rounded-xl flex md:justify-between justify-evenly items-center">
+                <div className="w-full col-span-1 row-span-1 row-start-1 rounded-xl flex justify-between items-center">
                     <div className="flex justify-center items-center">
                         <Image
                             loading="lazy"
@@ -173,7 +173,7 @@ const Metadata = ({ data, isLoaded, cords }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full col-span-1 row-span-1 row-start-2 rounded-xl flex md:justify-between justify-evenly items-center">
+                <div className="w-full col-span-1 row-span-1 row-start-2 rounded-xl flex justify-between items-center">
                     <div className="flex justify-center items-center">
                         <Image
                             loading="lazy"
@@ -219,7 +219,7 @@ const Metadata = ({ data, isLoaded, cords }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full col-span-1 row-span-1 row-start-3 rounded-xl flex md:justify-between justify-evenly items-center">
+                <div className="w-full col-span-1 row-span-1 row-start-3 rounded-xl flex justify-between items-center">
                     <div className="flex justify-center items-center">
                         <Image
                             loading="lazy"
@@ -265,7 +265,7 @@ const Metadata = ({ data, isLoaded, cords }: Props) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full col-span-1 row-span-1 row-start-4 rounded-xl flex md:justify-between justify-evenly items-center">
+                <div className="w-full col-span-1 row-span-1 row-start-4 rounded-xl flex justify-between items-center">
                     <div className="flex justify-center items-center">
                         <Image
                             loading="lazy"
