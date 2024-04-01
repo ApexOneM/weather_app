@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import MainWeather from "./components/MainWeather";
 import Metadata from "./components/Metadata";
 import AQI from "./components/AQI";
+import Forecast from "./components/Forecast";
 
 export default function Home() {
     const [cords, setCords] = useState<{ lat: number; lon: number } | null>(
@@ -79,13 +80,14 @@ export default function Home() {
                     data={weatherData ?? null}
                     isLoaded={weatherDataIsLoaded}
                 />
-                <div className="md:col-span-3 col-span-1 md:row-span-9 row-[span_15_/_span_15] md:col-start-2 col-start-1 md:row-start-2 row-start-10 grid md:grid-cols-3 grid-cols-1 md:grid-rows-9 grid-rows-[repeat(21,_minmax(0,_1fr))] px-2 md:my-0 my-2 md:gap-3 gap-4">
+                <div className="md:col-span-3 col-span-1 md:row-span-9 row-[span_16_/_span_16] md:col-start-2 col-start-1 md:row-start-2 row-start-9 grid md:grid-cols-3 grid-cols-1 md:grid-rows-9 grid-rows-[repeat(22,_minmax(0,_1fr))] px-2 md:my-0 my-2 md:gap-3 gap-4">
                     <Metadata
                         data={weatherData ?? null}
                         isLoaded={weatherDataIsLoaded}
                         cords={cords}
                     />
                     <AQI cords={cords} />
+                    <Forecast cords={cords} />
                 </div>
                 <Footer />
             </div>

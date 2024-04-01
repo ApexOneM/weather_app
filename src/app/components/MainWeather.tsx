@@ -73,7 +73,7 @@ const MainWeather = (props: {
     }
 
     return (
-        <main className="col-span-1 md:row-span-9 row-span-8 row-start-2 col-start-1 flex flex-col justify-evenly items-center md:gap-0 gap-2">
+        <main className="col-span-1 md:row-span-9 row-span-7 row-start-2 col-start-1 flex flex-col justify-evenly items-center md:gap-0 gap-2">
             <div className="w-full flex flex-col justify-center items-center">
                 <Skeleton
                     isLoaded={props.isLoaded}
