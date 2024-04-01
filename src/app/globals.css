@@ -28,15 +28,3 @@ body {
         text-wrap: balance;
     }
 }
-
-.search_bar {
-    @media (max-width: 768px) {
-        display: none;
-    }
-}
-
-.search_icon {
-    @media (max-width: 768px) {
-        display: block !important;
-    }
-}
