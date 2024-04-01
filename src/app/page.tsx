@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import MainWeather from "./components/MainWeather";
 import Metadata from "./components/Metadata";
 import AQI from "./components/AQI";
+import Forecast from "./components/Forecast";
 
 export default function Home() {
     const [cords, setCords] = useState<{ lat: number; lon: number } | null>(
@@ -86,6 +87,7 @@ export default function Home() {
                         cords={cords}
                     />
                     <AQI cords={cords} />
+                    <Forecast cords={cords} />
                 </div>
                 <Footer />
             </div>
