@@ -45,7 +45,7 @@ const Forecast = (props: Props) => {
     return (
         <Card
             shadow="none"
-            className="md:col-span-3 md:row-span-3 col-start-1 md:row-start-7 row-start-19 dark:bg-[#18181b] bg-[#f4f4f5]"
+            className="md:col-span-3 md:row-span-3 row-span-4 col-start-1 md:row-start-7 row-start-19 dark:bg-[#18181b] bg-[#f4f4f5]"
         >
             <CardHeader>Forecast:</CardHeader>
             <Skeleton isLoaded={forecastDataIsLoaded} className="h-full w-full">
